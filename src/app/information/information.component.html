@@ -1,0 +1,35 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-4 col-sm-12 p-3">
+            <img [src]="game.thumbnail" class="card-img-top" [alt]="game.title">
+            <a [href]="game.game_url" target="_blank"><h2 class="mt-2">{{ game.title }} ( {{ game.genre }} )</h2></a>
+            <h4>{{ game.publisher }}</h4>
+            <h5>{{ game.developer }}</h5>
+
+            <p class="m-0">{{ game.release_date | date }}</p>
+
+            <div class="description mt-3">
+                <p>{{ game.description }}</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-12 col-md-12 p-3">
+            <div>
+                <swiper [config]="config">
+                    <ng-template swiperSlide *ngFor="let screenshot of game.screenshots">
+                      <img [src]="screenshot.image" alt="" class="screenshots">
+                    </ng-template>
+                </swiper>
+            </div>
+            <div class="specifics">
+                <h3 class="mt-4"> Detalles </h3>
+                <h4>Plataforma: {{ game.platform }}</h4>
+                <h5>Requerimientos minimos</h5>
+                <p class="m-0">Graficas: {{ game.minimum_system_requirements.graphics }}</p>
+                <p class="m-0">RAM: {{ game.minimum_system_requirements.memory }}</p>
+                <p class="m-0">Sistema Operativo: {{ game.minimum_system_requirements.os }}</p>
+                <p class="m-0">Procesador: {{ game.minimum_system_requirements.processor }}</p>
+                <p class="m-0">Almacenamiento: {{ game.minimum_system_requirements.storage }}</p>
+            </div>
+        </div>
+    </div>
+</div>
